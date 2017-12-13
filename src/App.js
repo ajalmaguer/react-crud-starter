@@ -12,6 +12,8 @@ import Footer from './components/footer/footer';
 
 class App extends Component {
   render() {
+    console.log('APP > this.state = ', this.state)
+
     return (
       <BrowserRouter>
         <div className="App">
@@ -22,6 +24,7 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" render={(props) => {
+              console.log('rendering home page > this.state = ', this.state)
               return (<div>home page</div>)
             }}/>
 
@@ -33,7 +36,10 @@ class App extends Component {
             <Route 
               exact
               path='/movies/:id' 
-              render={(props) => <MoviesDetailPage />} 
+              render={(props) => {
+                // console.log('route > route param id =', props.match.params.id)
+                return <MoviesDetailPage id={props.match.params.id} />
+            }} 
             />
           </Switch>
 
